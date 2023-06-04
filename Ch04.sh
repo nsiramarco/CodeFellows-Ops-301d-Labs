@@ -19,14 +19,14 @@
 
 # Main
 while true; do
-    echo "Select a choice:"
+    echo "Make a Selection:"
     echo "1 for Hello World!"
     echo "2 for self ping"
     echo "3 for IP Information"
     echo "4 to Exit"
-    read -p "Please enter your selection: " choice
+    read -p "Please enter your selection: " selection
 
-    case $choice in
+    case $selection in
         1)
             echo "Hello World!!!"
             ;;
