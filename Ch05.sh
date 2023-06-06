@@ -28,14 +28,19 @@ echo
 echo 
 zip -r Backup-Directory$(date +"%Y%m%d%H%M%S").zip /var/log/syslog /var/log/wtmp
 echo "Backup has been Created..."
+echo 
 # Print compressed file sizes
 echo "Compressed File Size:"
 gzip -l Backup-Directory$(date +"%Y%m%d%H%M%S").zip
 echo
+
+# Clear Content
+> sudo /var/log/syslog /var/log/wtmp
+
 # Compare sizes
 echo "Comparison:"
-du -c /var/log/syslog /var/log/wtmp | awk '{print $1}' | bc -l
-du -c Backup-Directory$(date +"%Y%m%d%H%M%S").zip | awk '{print $1}' | bc -l
-
+du -h /var/log/syslog /var/log/wtmp
+du -h Backup-Directory$(date +"%Y%m%d%H%M%S").zip
+echo 
 
 # End
