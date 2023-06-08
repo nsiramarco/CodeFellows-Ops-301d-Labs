@@ -27,7 +27,7 @@ def directory_files(testdir):
         print("==dir==")
         print(dirs)
         ### Add a print command here to print ==files==
-        print("files")
+        print("==files==")
         print(files)
 
 # Main
