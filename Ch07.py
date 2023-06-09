@@ -11,31 +11,13 @@ import os
 #                               Script must enclose the os.walk() function within a python function that hands it the user input file path.
 
 
-# Declaration of variables
-
-### Read user input here into a variable
-
-# Declaration of functions
-
-### Declare a function here
-def directory_files(testdir):
-    for (root, dirs, files) in os.walk("testdir"):
-         ### Add a print command here to print ==root==
-        print("==root==")
-        print(root)
-        ### Add a print command here to print ==dirs==
-        print("==dir==")
-        print(dirs)
-        ### Add a print command here to print ==files==
-        print("==files==")
-        print(files)
+for (root, dirs, files) in os.walk("/bin/python3"):
+    for file in files:
+        print(root + "/" + file)
+         
 
 # Main
 
 ### Pass the variable into the function here
 
-if __name__ == '__main__':
-    path = input("Enter a directory path: ")
-    directory_files(path)
-
-# End
+# End 
