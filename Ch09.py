@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-# Script Name:                  Script Name
+# Script Name:                  Python Conditional Statements
 # Author:                       NATASHA SIRAMARCO
 # Date of latest revision:      06/10/2023
 # Purpose:                      - Create if statements using these logical conditionals below. 
