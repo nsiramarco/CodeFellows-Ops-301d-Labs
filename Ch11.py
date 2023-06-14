@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import psutil
+import subprocess
 
 # Script Name:                  Psutil
 # Author:                       NATASHA SIRAMARCO
@@ -17,11 +18,8 @@ import psutil
 #                                   Time spent by other operating systems running in a virtualized environment
 #                                   Time spent running a virtual CPU for guest operating systems under the control of the Linux kernel
                            
-# Declaration of variables
-
-# Declaration of functions
-
 # Main
+
 # User mode
 user_mode = psutil.cpu_times().user
 print("User Mode:", user_mode)
