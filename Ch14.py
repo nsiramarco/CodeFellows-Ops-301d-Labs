@@ -108,5 +108,6 @@ detonate()
 
 #   2. How well is this code written? Would you have done something differently to achieve the same objective?
 #       I think this code is not 100% great it didnt properly close the read and write files
+
 #   3. How long you spent working on this assignment
 #       Only took me around an hour to download the appropriate programming language and code editors and have everything in a contained vm enviroment
